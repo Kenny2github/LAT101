@@ -51,6 +51,14 @@ class Tense(Enum):
             Tense.PLUPERFECT,
         }
 
+    @property
+    def unpast(self) -> Tense:
+        return {
+            Tense.PERFECT: Tense.PRESENT,
+            Tense.PLUPERFECT: Tense.IMPERFECT,
+            Tense.FUTURE_PERFECT: Tense.FUTURE,
+        }[self]
+
 Voice = Literal['active', 'passive']
 Mood = Literal['indicative', 'subjunctive', 'imperative']
 
