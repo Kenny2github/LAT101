@@ -89,7 +89,7 @@ class Verb:
                     or self.mood != 'indicative':
                 return 'm'
             if self.mood == 'indicative' \
-                    and (self.tense.past ) \
+                    and (self.tense.past or self.tense == Tense.FUTURE) \
                     and self.voice == 'passive':
                 return 'r'
         return table[self.voice][self.number][self.person - 1]
