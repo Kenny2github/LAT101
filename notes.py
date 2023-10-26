@@ -85,8 +85,13 @@ class Verb:
         if self.person == 1 and self.number == 'sg':
             if self.mood == 'indicative' \
                     and self.tense.past \
+                    and self.voice == 'active' \
                     or self.mood != 'indicative':
                 return 'm'
+            if self.mood == 'indicative' \
+                    and (self.tense.past ) \
+                    and self.voice == 'passive':
+                return 'r'
         return table[self.voice][self.number][self.person - 1]
 
     @property
@@ -130,7 +135,8 @@ class Verb:
                 assert_never(x)
 
     def _add_personal_ending(self, result: str, person: str) -> str:
-        if person in {'m', 't', 'nt', 'r', 'ntur'}:
+        # technically -or is the same as -r so it shortens the preceding vowel
+        if person in {'m', 't', 'nt', 'or', 'r', 'ntur'}:
             result = result[:-1] + shorten(result[-1])
         if person == 'ō' and result.endswith(VOWELS):
             if self.vocab.i_stem:
