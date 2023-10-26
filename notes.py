@@ -148,7 +148,7 @@ class Verb:
         if person in {'m', 't', 'nt', 'or', 'r', 'ntur'}:
             result = result[:-1] + shorten(result[-1])
         if person == 'ō' and result.endswith(VOWELS):
-            if self.vocab.i_stem:
+            if self.vocab.i_stem and not self.tense.perfect:
                 result = result[:-1] + shorten(result[-1]) + person
             else:
                 result = result[:-1] + person
