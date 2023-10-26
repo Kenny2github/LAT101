@@ -174,6 +174,8 @@ class Verb:
                 result += 'unt'
             else:
                 result += 'int'
+        elif person == 'ris' and result[-1] == 'i':
+            result = result[:-1] + 'e' + person
         else:
             result += person
         return result
