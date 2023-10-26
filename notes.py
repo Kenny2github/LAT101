@@ -70,6 +70,9 @@ class Verb:
     voice: Voice
     mood: Mood
     vocab: VerbVocab
+    # for perfect passives
+    gender: Gender = 'M'
+    subj_number: Number = 'sg'
 
     @property
     def personal_ending(self) -> LiteralString:
@@ -133,6 +136,17 @@ class Verb:
 
     def __str__(self) -> str:
         """Render to string word."""
+        if self.voice == 'passive' and self.tense.perfect:
+            from vocab import sum_
+            # decline participle
+            v = AdjVocab(self.vocab.perfect_passive_participle, '-a', '-um')
+            v = v.as_noun(self.gender)
+            participle = Noun('nominative', self.subj_number, v)
+            # conjugate "sum"
+            verb = Verb(self.person, self.number, self.tense.unpast,
+                        'active', self.mood, sum_)
+            return str(participle) + ' ' + str(verb)
+
         match self.mood:
             case 'indicative':
                 return self._conjg_indicative()
