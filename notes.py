@@ -174,6 +174,8 @@ class Verb:
         else:
             stem = self.stem
             tense = self.tense_sign
+            if stem[-1] in VOWELS and tense and tense[0] in VOWELS:
+                stem = stem[:-1] + shorten(stem[-1])
             result = stem + tense
         person = self.personal_ending
         if (
@@ -268,8 +270,6 @@ class VerbVocab:
         stem = self.present_active_infinitive.removesuffix('re')
         if self.i_stem and self.conjugation == 3:
             return stem.removesuffix('e') + 'i'
-        if self.conjugation == 4:
-            return stem.removesuffix('ī') + 'i'
         return stem
 
     @property
