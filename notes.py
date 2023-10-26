@@ -86,20 +86,21 @@ class Verb:
                 'pl': ['mus', 'tis', 'nt'],
             },
             'passive': {
-                'sg': ['or', 'ris', 'tur'],
+                'sg': ['r', 'ris', 'tur'],
                 'pl': ['mur', 'minī', 'ntur'],
             }
         }
         if self.person == 1 and self.number == 'sg':
-            if self.mood == 'indicative' \
-                    and self.tense.past \
-                    and self.voice == 'active' \
-                    or self.mood != 'indicative':
+            if (
+                self.mood == 'indicative'
+                and self.tense.past
+                or self.mood != 'indicative'
+            ) and self.voice == 'active':
                 return 'm'
             if self.mood == 'indicative' \
-                    and (self.tense.past or self.tense == Tense.FUTURE) \
+                    and self.tense == Tense.PRESENT \
                     and self.voice == 'passive':
-                return 'r'
+                return 'or'
         return table[self.voice][self.number][self.person - 1]
 
     @property
