@@ -195,7 +195,15 @@ class Verb:
                 if self.vocab.is_be:
                     stem = 'sī'
                 else:
-                    stem = self.stem[:-1] + 'ē'
+                    subj_sign = {
+                        1: 'ē',
+                        2: 'eā',
+                        3: 'ā',
+                        4: 'iā',
+                    }[self.vocab.conjugation]
+                    if self.vocab.conjugation == 3 and self.vocab.i_stem:
+                        subj_sign = 'i' + subj_sign
+                    stem = self.stem[:-1] + subj_sign
                 return self._add_personal_ending(
                     stem, self.personal_ending
                 )
