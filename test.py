@@ -76,7 +76,11 @@ def full_conj_table(verb: VerbVocab) -> None:
             conjugation_table(verb, voice, mood)
 
 def test_verbs() -> None:
-    from vocab import incipiō, sentiō
+    from vocab import dūcō, incipiō, sentiō
+    full_conj_table(dūcō)
+    print()
+    full_conj_table(incipiō)
+    print()
     full_conj_table(sentiō)
 
 def test_nouns() -> None:
