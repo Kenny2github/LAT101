@@ -202,10 +202,13 @@ class Verb:
         else:
             stem = self.stem
             if self.vocab.conjugation == 3:
-                if self.tense == Tense.IMPERFECT:
-                    stem = stem[:-1] + lengthen(stem[-1])
-                elif self.tense == Tense.FUTURE:
-                    stem = stem[:-1]
+                if self.vocab.i_stem and stem.endswith(VOWELS):
+                    stem = stem[:-1] + 'i'
+                else:
+                    if self.tense == Tense.IMPERFECT:
+                        stem = stem[:-1] + lengthen(stem[-1])
+                    elif self.tense == Tense.FUTURE:
+                        stem = stem[:-1]
             tense = self.tense_sign
             if stem[-1] in VOWELS and tense and tense[0] in VOWELS:
                 stem = stem[:-1] + shorten(stem[-1])
@@ -308,8 +311,7 @@ class VerbVocab:
 
     @property
     def present_stem(self) -> LiteralString:
-        stem = self.present_active_infinitive.removesuffix('re')
-        return stem
+        return self.present_active_infinitive.removesuffix('re')
 
     @property
     def perfect_stem(self) -> LiteralString:
