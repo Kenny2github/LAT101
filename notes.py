@@ -201,6 +201,11 @@ class Verb:
             }[self.tense.value][self.number][self.person - 1]
         else:
             stem = self.stem
+            if self.vocab.conjugation == 3:
+                if self.tense == Tense.IMPERFECT:
+                    stem = stem[:-1] + lengthen(stem[-1])
+                elif self.tense == Tense.FUTURE:
+                    stem = stem[:-1]
             tense = self.tense_sign
             if stem[-1] in VOWELS and tense and tense[0] in VOWELS:
                 stem = stem[:-1] + shorten(stem[-1])
