@@ -132,6 +132,9 @@ class Verb:
     def stem(self) -> LiteralString:
         if self.tense.perfect:
             return self.vocab.perfect_stem
+        if self.tense == Tense.PRESENT and self.vocab.conjugation == 3 \
+                and not self.vocab.i_stem:
+            return self.vocab.present_stem.removesuffix('e') + 'i'
         return self.vocab.present_stem
 
     def __str__(self) -> str:
@@ -301,8 +304,6 @@ class VerbVocab:
     @property
     def present_stem(self) -> LiteralString:
         stem = self.present_active_infinitive.removesuffix('re')
-        if self.i_stem and self.conjugation == 3:
-            return stem.removesuffix('e') + 'i'
         return stem
 
     @property
