@@ -121,7 +121,7 @@ class Verb:
                 if self.vocab.conjugation == 1 or self.vocab.conjugation == 2:
                     return 'bi'
                 if self.vocab.conjugation == 3 or self.vocab.conjugation == 4:
-                    return 'ē' if self.person != 1 or self.number == 'pl' else 'a'
+                    return 'a' if self.person == 1 and self.number == 'sg' else 'ē'
                 assert_never(self.vocab.conjugation)
             case 'future perfect':
                 return 'eri'
