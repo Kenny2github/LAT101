@@ -162,9 +162,9 @@ class Verb:
 
     def _add_personal_ending(self, result: str, person: str) -> str:
         # technically -or is the same as -r so it shortens the preceding vowel
-        if person in {'m', 't', 'nt', 'or', 'r', 'ntur'}:
+        if person in {'m', 't', 'nt', 'r', 'ntur'}:
             result = result[:-1] + shorten(result[-1])
-        if person == 'ō' and result.endswith(VOWELS):
+        if person[0] in {'o', 'ō'} and result.endswith(VOWELS):
             if self.vocab.i_stem and not self.tense.perfect:
                 result = result[:-1] + shorten(result[-1]) + person
             else:
