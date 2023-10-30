@@ -93,12 +93,58 @@ def test_adjectives() -> None:
     modification_table(clārus)
 
 def random_test() -> None:
-    from vocab import capiō, Rōmānus, dexter
-    noun = Noun('genitive', 'pl', Rōmānus.as_noun('M'))
-    adj = Adjective(dexter, noun)
-    print(adj, noun)
-    verb = Verb(1, 'sg', Tense.PRESENT, 'active', 'subjunctive', capiō)
-    print(verb)
+    print()
+    from vocab import (
+        turba, magnus, rēgīna, bonus, gladius, terreō,
+        prōvincia, īnsula, superō,
+        littera, ā, pulcher, ad, honestus, mittō,
+        moneō, bellum, gerō,
+        oppidum, amīcus, malus,
+    )
+    print('Unit Three Exercises I.10')
+    crowd = Noun('nominative', 'sg', turba)
+    large = Adjective(magnus, crowd)
+    queen = Noun('accusative', 'sg', rēgīna)
+    good = Adjective(bonus, queen)
+    with_swords = Noun('ablative', 'pl', gladius)
+    frightened = Verb(3, 'sg', Tense.PERFECT, 'active', 'indicative', terreō)
+    in_order_that = 'ut'
+    both = 'et'
+    province = Noun('accusative', 'sg', prōvincia)
+    and_ = 'et'
+    island = Noun('accusative', 'sg', īnsula)
+    might_conquer = Verb(3, 'sg', Tense.IMPERFECT, 'active', 'subjunctive', superō)
+    print(crowd, large, queen, good, with_swords, frightened,
+          in_order_that, both, province, and_, island, might_conquer)
+    print('The large crowd frightened the good queen with swords '
+          'in order that she might conquer both the province and the island.')
+
+    print('\nUnit Four Exercises I.5')
+    if_ = 'sī'
+    letters = Noun('nominative', 'pl', littera)
+    by1 = ā.prep[0]
+    queen = Noun(ā.case, 'sg', rēgīna)
+    beautiful = Adjective(pulcher, queen)
+    to = ad.prep
+    honorable_men = Noun(ad.case, 'pl', honestus.as_noun('M'))
+    had_been_sent = Verb(3, 'pl', Tense.PLUPERFECT, 'passive', 'subjunctive', mittō, letters.vocab.gender, letters.number)
+    they_would_have_been_warned = Verb(3, 'pl', Tense.PLUPERFECT, 'passive', 'subjunctive', moneō, subj_number='pl')
+    in_order_that = 'ut'
+    war = Noun('accusative', 'sg', bellum)
+    they_might_wage = Verb(3, 'pl', Tense.IMPERFECT, 'active', 'subjunctive', gerō)
+    and_ = 'et'
+    town = Noun('nominative', 'sg', oppidum)
+    by2 = ā.prep[1]
+    friends = Noun(ā.case, 'pl', amīcus.as_noun('M'))
+    evil = Noun('genitive', 'pl', malus.as_noun('M'))
+    not_ = 'nōn'
+    have_been_conquered = Verb(3, 'sg', Tense.PLUPERFECT, 'passive', 'subjunctive', superō, town.vocab.gender, town.number)
+    print(if_, letters, by1, queen, beautiful, to, honorable_men, had_been_sent,
+          they_would_have_been_warned, in_order_that, war, they_might_wage,
+          and_, town, by2, friends, evil, not_, have_been_conquered)
+    print('If letters had been sent by the beautiful queen to honorable men, '
+          'they would have been warned in order that they might wage a war, '
+          'and the town would not have been conquered by friends of evil (men).')
 
 def main():
     test_verbs()
@@ -107,7 +153,7 @@ def main():
     # print('=====')
     # test_adjectives()
     # print('=====')
-    # random_test()
+    random_test()
 
 if __name__ == '__main__':
     main()
