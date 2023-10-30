@@ -77,10 +77,11 @@ def full_conj_table(verb: VerbVocab) -> None:
 
 def test_verbs() -> None:
     from vocab import dūcō, incipiō, sentiō
+    print('\n' + ' 3rd conjugation '.center(79, '=') + '\n')
     full_conj_table(dūcō)
-    print()
+    print('\n' + ' 3rd conjugation, i-stem '.center(79, '=') + '\n')
     full_conj_table(incipiō)
-    print()
+    print('\n' + ' 4th conjugation '.center(79, '=') + '\n')
     full_conj_table(sentiō)
 
 def test_nouns() -> None:
