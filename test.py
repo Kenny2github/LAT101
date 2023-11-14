@@ -146,6 +146,99 @@ def random_test() -> None:
           'they would have been warned in order that they might wage a war, '
           'and the town would not have been conquered by friends of evil (men).')
 
+    print('\nUnit Four Drill I.')
+    from vocab import spectō, corōnō, dō, dōnō, habeō, impleō, videō, capiō, cēlō, cōgitō, dāmnō, incipiō, labōrō, moneō
+    a = list(map(str, (
+        Verb(2, 'sg', Tense.PRESENT, 'active', 'indicative', spectō),
+        Verb(2, 'sg', Tense.PRESENT, 'passive', 'indicative', spectō),
+        Verb(1, 'pl', Tense.PRESENT, 'active', 'indicative', corōnō),
+        Verb(1, 'pl', Tense.PRESENT, 'passive', 'indicative', corōnō),
+        Verb(2, 'pl', Tense.PRESENT, 'active', 'subjunctive', dō),
+        Verb(2, 'pl', Tense.PRESENT, 'passive', 'subjunctive', dō),
+        Verb(3, 'pl', Tense.PRESENT, 'active', 'subjunctive', dōnō),
+        Verb(3, 'pl', Tense.PRESENT, 'passive', 'subjunctive', dōnō),
+        Verb(1, 'sg', Tense.PRESENT, 'active', 'subjunctive', habeō),
+        Verb(1, 'sg', Tense.PRESENT, 'passive', 'subjunctive', habeō),
+        Verb(3, 'sg', Tense.PRESENT, 'active', 'subjunctive', impleō),
+        Verb(3, 'sg', Tense.PRESENT, 'passive', 'subjunctive', impleō),
+        Verb(2, 'pl', Tense.FUTURE, 'active', 'indicative', videō),
+        Verb(2, 'pl', Tense.FUTURE, 'passive', 'indicative', videō),
+        Verb(2, 'pl', Tense.FUTURE, 'active', 'indicative', capiō),
+        Verb(2, 'pl', Tense.FUTURE, 'passive', 'indicative', capiō),
+        Verb(2, 'pl', Tense.PRESENT, 'active', 'subjunctive', capiō),
+        Verb(2, 'pl', Tense.PRESENT, 'passive', 'subjunctive', capiō),
+        Verb(2, 'pl', Tense.PRESENT, 'active', 'indicative', capiō),
+        Verb(2, 'pl', Tense.PRESENT, 'passive', 'indicative', capiō),
+        Verb(1, 'pl', Tense.IMPERFECT, 'active', 'indicative', cēlō),
+        Verb(1, 'pl', Tense.IMPERFECT, 'passive', 'indicative', cēlō),
+        Verb(3, 'sg', Tense.IMPERFECT, 'active', 'subjunctive', cōgitō),
+        Verb(3, 'sg', Tense.IMPERFECT, 'passive', 'subjunctive', cōgitō),
+        Verb(3, 'sg', Tense.PRESENT, 'active', 'subjunctive', cōgitō),
+        Verb(3, 'sg', Tense.PRESENT, 'passive', 'subjunctive', cōgitō),
+        Verb(3, 'sg', Tense.PRESENT, 'active', 'indicative', cōgitō),
+        Verb(3, 'sg', Tense.PRESENT, 'passive', 'indicative', cōgitō),
+        Verb(2, 'sg', Tense.IMPERFECT, 'active', 'indicative', dāmnō),
+        Verb(2, 'sg', Tense.IMPERFECT, 'passive', 'indicative', dāmnō),
+        Verb(2, 'sg', Tense.PERFECT, 'active', 'indicative', dāmnō),
+        Verb(2, 'sg', Tense.PERFECT, 'passive', 'indicative', dāmnō),
+        Verb(3, 'sg', Tense.PLUPERFECT, 'active', 'subjunctive', incipiō),
+        Verb(3, 'sg', Tense.PLUPERFECT, 'passive', 'subjunctive', incipiō),
+        Verb(3, 'pl', Tense.PLUPERFECT, 'active', 'subjunctive', incipiō),
+        Verb(3, 'pl', Tense.PLUPERFECT, 'passive', 'subjunctive', incipiō),
+        Verb(3, 'sg', Tense.FUTURE_PERFECT, 'active', 'indicative', labōrō),
+        Verb(3, 'sg', Tense.FUTURE_PERFECT, 'passive', 'indicative', labōrō),
+        Verb(3, 'sg', Tense.PERFECT, 'active', 'subjunctive', labōrō),
+        Verb(3, 'sg', Tense.PERFECT, 'passive', 'subjunctive', labōrō),
+        Verb(2, 'pl', Tense.PLUPERFECT, 'active', 'indicative', moneō),
+        Verb(2, 'pl', Tense.PLUPERFECT, 'passive', 'indicative', moneō),
+    )))
+    b = """
+spectās
+spectāris
+corōnāmus
+corōnāmur
+dētis
+dēminī
+dōnent
+dōnentur
+habeam
+habear
+impleat
+impleātur
+vidēbitis
+vidēbiminī
+capiētis
+capiēminī
+capiātis
+capiāminī
+capitis
+capiminī
+cēlābāmus
+cēlābāmur
+cōgitāret
+cōgitārētur
+cōgitet
+cōgitētur
+cōgitat
+cōgitātur
+dāmnābās
+dāmnābāris
+dāmnāvistī
+dāmnātus es
+incēpisset
+inceptus esset
+incēpissent
+inceptus essent
+labōrāverit
+labōrātus erit
+labōrāverit
+labōrātus sit
+monuerātis
+monitus erātis
+""".strip().splitlines()
+    for i, j in zip(a, b):
+        print(i, '==' if i == j else '!=', j)
+
 def main():
     test_verbs()
     # print('=====')
