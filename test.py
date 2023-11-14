@@ -107,7 +107,7 @@ def random_test() -> None:
     queen = Noun('accusative', 'sg', rēgīna)
     good = Adjective(bonus, queen)
     with_swords = Noun('ablative', 'pl', gladius)
-    frightened = Verb(3, 'sg', Tense.PERFECT, 'active', 'indicative', terreō)
+    frightened = Verb(3, crowd.number, Tense.PERFECT, 'active', 'indicative', terreō)
     in_order_that = 'ut'
     both = 'et'
     province = Noun('accusative', 'sg', prōvincia)
