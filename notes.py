@@ -270,7 +270,7 @@ class VerbVocab:
     perfect_passive_participle: LiteralString
 
     def __post_init__(self) -> None:
-        pai = self.present_active_indicative_1p_s.rstrip('iō')
+        pai = self.present_active_indicative_1p_s.rstrip('ieō')
 
         item = self.present_active_infinitive
         if item.startswith('-'):
