@@ -412,7 +412,7 @@ class Noun:
 
 @dataclass
 class Adjective:
-    vocab: AdjVocab
+    vocab: AdjVocab | Verb
     target: Noun | Adjective # noun (or its modifying adjective) being modified
 
     @property
@@ -423,9 +423,29 @@ class Adjective:
 
     def __str__(self) -> str:
         """Render to string word"""
-        pseudo_nv = self.vocab.as_noun(self.noun.vocab.gender)
+        vocab = self.vocab
+        if isinstance(vocab, Verb):
+            vocab = self.make_participle(vocab)
+        pseudo_nv = vocab.as_noun(self.noun.vocab.gender)
         pseudo_noun = Noun(self.noun.case, self.noun.number, pseudo_nv)
         return str(pseudo_noun)
+
+    def make_participle(self, verb: Verb) -> AdjVocab:
+        match (verb.tense, verb.voice):
+            case (Tense.PRESENT, 'active'):
+                stem: LiteralString = verb.stem
+                if verb.vocab.i_stem:
+                    stem = stem[:-1] + 'ie' # type: ignore
+                # TODO: third declension nouns
+                return AdjVocab(stem + 'ns', '--', '--')
+            case (Tense.PERFECT, 'passive'):
+                return AdjVocab(verb.vocab.perfect_passive_participle, '-a', '-um')
+            case (Tense.FUTURE, 'active'):
+                return AdjVocab(verb.stem + 'ūrus', '-a', '-um')
+            case (Tense.FUTURE, 'passive'):
+                return AdjVocab(verb.stem + 'ndus', '-a', '-um')
+            case x:
+                raise ValueError(x)
 
 Case = Literal[
     'nominative',
