@@ -185,3 +185,55 @@ vērus = AdjVocab('vērus', '-a', '-um') # true, real [veritable]
 # vēre or vērō (adv.) truly, indeed
 videō = VerbVocab('videō', '-ēre', 'vīdī', 'vīsus') # see; (in passive) seem, _as well as_ be seen
 vīlla = NounVocab('vīlla', '-ae', 'F') # country house, farmhouse
+
+# Unit Five
+ante = PrepVocab('ante', 'accusative') # before, in front of [antecedent]
+# ante (adv.) before, previously
+antīquus = AdjVocab('antīquus', '-a', '-um') # ancient [antique]
+ardeō = VerbVocab('ardeō', '-ēre', 'arsī', 'arsus') # burn, be on fire [arson]; desire
+# NOTE: arma, armōrum, N. is never found in the singular
+arma = NounVocab('armum', '-ī', 'N') # arms [], weapons
+aurum = NounVocab('aurum', '-ī', 'N') # gold [Au]
+aureus = AdjVocab('aureus', '-a', '-um') # golden, of gold [Au]
+# autem (postpositive conj.) however, moreover
+# bene (adv.) well
+canō = VerbVocab('canō', '-ere', 'cecinī', 'cantus') # sing (of) [cant]
+cēdō = VerbVocab('cēdō', '-ere', 'cessī', 'cessus') # go, move, yield [cede, cease]
+accēdō = VerbVocab('accēdō', '-ere', 'accessī', 'accessus') # go to, approach [accede, access]
+discēdō = VerbVocab('discēdō', '-ere', 'discēssī', 'discessus') # go from, depart, leave [discuss?]
+dēbeō = VerbVocab('dēbeō', '-ēre', 'dēbuī', 'dēbitus') # owe, ought [debit/debt]
+dominus = NounVocab('dominus', '-ī', 'M') # master, lord [dominate]
+dūrus = AdjVocab('dūrus', '-a', '-um') # hard, harsh [durable]
+ferrum = NounVocab('ferrum', '-ī', 'N') # iron, sword [ferrite]
+flamma = NounVocab('flamma', '-ae', 'F') # flame [], fire
+imperium = NounVocab('imperium', '-ī', 'N') # authority, power, empire [imperial]
+imperō = VerbVocab.first_conj('imperō') # give (an) order(s), give (a) command(s) [imperative]
+# ^ the person ordered is in the dative; the thing ordered is expressed with a purpose clause
+interficiō = VerbVocab('interficiō', '-ere', 'interfēcī', 'interfectus') # kill [interfere?]
+invādō = VerbVocab('invādō', '-ere', 'invāsī', 'invāsus') # go into, invade [], attack
+magister = NounVocab('magister', 'magistrī', 'M') # superior, director, master, teacher [magistrate]
+medius = AdjVocab('medius', '-a', '-um') # middle of, middle [median]
+moveō = VerbVocab('moveō', '-ēre', 'mōvī', 'mōtus') # move []
+removeō = VerbVocab('removeō', '-ēre', 'remōvī', 'remōtus') # remove [], take away, set aside [remote]
+# mox (adv.) soon
+nōscō = VerbVocab('nōscō', '-ere', 'nōvī', 'nōtus') # learn, (in perfect) know
+cognōscō = VerbVocab('cognōscō', '-ere', 'cognōvī', 'cognitus') # learn, (in perfect) know [cognitive]
+novus = AdjVocab('novus', '-a', '-um') # new, strange
+# numquam/nunquam (adv.) never
+# umquam/unquam (adv.) ever
+pius = AdjVocab('pius', '-a', '-um') # loyal, dutiful, pious []
+impius = AdjVocab('impius', '-a', '-um') # irreverant, wicked, impious []
+populus = NounVocab('populus', '-ī', 'M') # people [populus]
+possum = VerbVocab('possum', 'posse', 'potuī', '--') # be able, can
+post = PrepVocab('post', 'accusative') # after, behind
+# post (adv.) afterwards, after, behind
+# postquam (conj.) after (+ indicative)
+# quamquam (conj.) although (+ indicative)
+ruīna = NounVocab('ruīna', '-ae', 'F') # fall, downfall, ruin [], destruction
+ruō = VerbVocab('ruō', '-ere', 'ruī', 'rutus') # fall, go to ruin [], rush [rue?]
+sine = PrepVocab('sine', 'ablative') # without
+socius_adj = AdjVocab('socius', '-a', '-um') # allied [society]
+socius_n = NounVocab('socius', '-ī', 'M') # ally [society]
+# tamen (adv.) nevertheless
+vīvō = VerbVocab('vīvō', '-ere', 'vīxī', 'vīctus') # be alive, live [vivid]
+vocō = VerbVocab.first_conj('vocō') # call [vocal]
