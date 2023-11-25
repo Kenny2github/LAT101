@@ -425,27 +425,10 @@ class Adjective:
         """Render to string word"""
         vocab = self.vocab
         if isinstance(vocab, Verb):
-            vocab = self.make_participle(vocab)
+            vocab = AdjVocab.participle(vocab)
         pseudo_nv = vocab.as_noun(self.noun.vocab.gender)
         pseudo_noun = Noun(self.noun.case, self.noun.number, pseudo_nv)
         return str(pseudo_noun)
-
-    def make_participle(self, verb: Verb) -> AdjVocab:
-        match (verb.tense, verb.voice):
-            case (Tense.PRESENT, 'active'):
-                stem: LiteralString = verb.stem
-                if verb.vocab.i_stem:
-                    stem = stem[:-1] + 'ie' # type: ignore
-                # TODO: third declension nouns
-                return AdjVocab(stem + 'ns', '--', '--')
-            case (Tense.PERFECT, 'passive'):
-                return AdjVocab(verb.vocab.perfect_passive_participle, '-a', '-um')
-            case (Tense.FUTURE, 'active'):
-                return AdjVocab(verb.stem + 'ūrus', '-a', '-um')
-            case (Tense.FUTURE, 'passive'):
-                return AdjVocab(verb.stem + 'ndus', '-a', '-um')
-            case x:
-                raise ValueError(x)
 
 Case = Literal[
     'nominative',
@@ -515,6 +498,26 @@ class AdjVocab:
         item = self.neuter
         if item.startswith('-'):
             self.neuter = stem + item.lstrip('-')
+
+    @classmethod
+    def participle(cls, verb: Verb) -> AdjVocab:
+        match (verb.tense, verb.voice):
+            case (Tense.PRESENT, 'active'):
+                stem: LiteralString = verb.stem
+                if verb.vocab.i_stem:
+                    stem = stem[:-1] + 'ie' # type: ignore
+                stem = stem[:-1] + lengthen(stem[-1]) # type: ignore
+                # TODO: third declension nouns
+                return cls(stem + 'ns', '--', '--')
+            case (Tense.PERFECT, 'passive'):
+                return cls(verb.vocab.perfect_passive_participle, '-a', '-um')
+            case (Tense.FUTURE, 'active'):
+                return cls(verb.stem + 'ūrus', '-a', '-um')
+            case (Tense.FUTURE, 'passive'):
+                stem = verb.stem[:-1] + shorten(verb.stem[-1]) # type: ignore
+                return cls(verb.stem + 'ndus', '-a', '-um')
+            case x:
+                raise ValueError(x)
 
     def as_noun(self, gender: Gender) -> NounVocab:
         match gender:
