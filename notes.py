@@ -71,8 +71,7 @@ class Verb:
     mood: Mood
     vocab: VerbVocab
     # for perfect passives
-    gender: Gender = 'M'
-    subj_number: Number = 'sg'
+    subject: Noun | None = None
 
     @property
     def personal_ending(self) -> LiteralString:
@@ -140,11 +139,13 @@ class Verb:
     def __str__(self) -> str:
         """Render to string word."""
         if self.voice == 'passive' and self.tense.perfect:
+            if self.subject is None:
+                raise ValueError('Subject required for perfect passive conjugation')
             from vocab import sum_
             # decline participle
-            v = AdjVocab(self.vocab.perfect_passive_participle, '-a', '-um')
-            v = v.as_noun(self.gender)
-            participle = Noun('nominative', self.subj_number, v)
+            perfective = Verb(self.person, self.number, Tense.PERFECT,
+                              self.voice, self.mood, self.vocab)
+            participle = Adjective(perfective, self.subject)
             # conjugate "sum"
             verb = Verb(self.person, self.number, self.tense.unpast,
                         'active', self.mood, sum_)

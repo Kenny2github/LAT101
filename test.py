@@ -33,12 +33,16 @@ def modification_table(adj: AdjVocab) -> None:
 def conjugation_table(
     verb: VerbVocab, voice: Voice = 'active', mood: Mood = 'indicative'
 ) -> None:
+    from vocab import Marcus
+    # dummy subject, never displayed
+    subject = Noun('nominative', 'sg', Marcus)
+
     tenses = list(Tense)
     if mood == 'subjunctive':
         del tenses[2], tenses[-1] # no future subjunctives
-    present_tenses = tenses[:len(tenses)//2]
-    perfect_tenses = tenses[len(tenses)//2:]
-    width = max(len(str(Verb(person, number, tense, voice, mood, verb)))
+    present_tenses = [tense for tense in tenses if not tense.perfect]
+    perfect_tenses = [tense for tense in tenses if tense.perfect]
+    width = max(len(str(Verb(person, number, tense, voice, mood, verb, subject)))
                 for person in (1, 2, 3) for number in get_args(Number) for tense in tenses)
     width = max(width, max(len(tense.value) for tense in tenses))
     width += 1 # add a space
@@ -51,7 +55,7 @@ def conjugation_table(
         for number in get_args(Number):
             for tense in present_tenses:
                 print(str(Verb(person, number, tense,
-                               voice, mood, verb)).center(width), end='')
+                               voice, mood, verb, subject)).center(width), end='')
         print()
 
     print('singular'.center(width * len(perfect_tenses))
@@ -63,7 +67,7 @@ def conjugation_table(
         for number in get_args(Number):
             for tense in perfect_tenses:
                 print(str(Verb(person, number, tense,
-                               voice, mood, verb)).center(width), end='')
+                               voice, mood, verb, subject)).center(width), end='')
         print()
 
 def full_conj_table(verb: VerbVocab) -> None:
@@ -109,13 +113,13 @@ def random_test() -> None:
     ))
 
 def main():
-    # test_verbs()
+    test_verbs()
     # print('=====')
     # test_nouns()
     # print('=====')
     # test_adjectives()
     # print('=====')
-    random_test()
+    # random_test()
 
 if __name__ == '__main__':
     main()
