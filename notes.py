@@ -60,7 +60,7 @@ class Tense(Enum):
         }[self]
 
 Voice = Literal['active', 'passive']
-Mood = Literal['indicative', 'subjunctive', 'imperative']
+Mood = Literal['indicative', 'subjunctive', 'imperative', 'infinitive']
 
 @dataclass
 class Verb:
@@ -158,6 +158,8 @@ class Verb:
                 return self._conjg_subjunctive()
             case 'imperative':
                 raise NotImplementedError
+            case 'infinitive':
+                return self._conjg_infinitive()
             case x:
                 assert_never(x)
 
@@ -262,6 +264,32 @@ class Verb:
                 )
             case _:
                 raise ValueError(self.tense.value)
+
+    def _conjg_infinitive(self) -> str:
+        pai = self.vocab.present_active_infinitive
+        if self.tense == Tense.PRESENT:
+            if self.voice == 'active':
+                return pai
+            if self.voice == 'passive':
+                if self.vocab.conjugation == 3:
+                    return pai[:-3] + 'ī'
+                return pai[:-1] + 'ī'
+            assert_never(self.voice)
+        elif self.tense == Tense.PERFECT:
+            if self.voice == 'active':
+                return self.vocab.perfect_stem + 'isse'
+            if self.voice == 'passive':
+                return self.vocab.perfect_passive_participle + ' esse'
+            assert_never(self.voice)
+        elif self.tense == Tense.FUTURE:
+            if self.voice == 'active':
+                return self.vocab.perfect_passive_participle[:-2] + 'urus esse'
+            if self.voice == 'passive':
+                raise NotImplementedError(
+                    "The future passive infinitive occurs so rarely in Latin "
+                    "that its discussion has been omitted from this text.")
+            assert_never(self.voice)
+        raise ValueError(self.tense)
 
 @dataclass
 class VerbVocab:

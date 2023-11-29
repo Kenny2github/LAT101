@@ -40,6 +40,10 @@ def conjugation_table(
     tenses = list(Tense)
     if mood == 'subjunctive':
         del tenses[2], tenses[-1] # no future subjunctives
+    elif mood == 'infinitive':
+        del tenses[1], tenses[-2:] # only present, future, and perfect infinitives
+        if voice == 'passive':
+            del tenses[1] # future passive infinitive not implemented
     present_tenses = [tense for tense in tenses if not tense.perfect]
     perfect_tenses = [tense for tense in tenses if tense.perfect]
     width = max(len(str(Verb(person, number, tense, voice, mood, verb, subject)))
