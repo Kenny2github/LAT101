@@ -113,7 +113,7 @@ dōnum = NounVocab('dōnum', '-ī', 'N') # gift [donation]
 gerō = VerbVocab('gerō', '-ere', 'gessī', 'gestus') # conduct, manage, wage [gestate?]
 gladius = NounVocab('gladius', '-ī', 'M') # sword [gladiator]
 laetus = AdjVocab('laetus', '-a', '-um') # happy
-līber = AdjVocab('līber', 'lībera', 'līberum') # free [liberate]
+līber = AdjVocab('līber', 'lībera', 'līberum') # free [liberty]
 magnus = AdjVocab('magnus', '-a', '-um') # large, big, great [magnitude]
 malus = AdjVocab('malus', '-a', '-um') # evil, bad, wicked [malicious]
 Marcus = NounVocab('Marcus', '-ī', 'M') # proper name
@@ -144,7 +144,7 @@ vir = NounVocab('vir', 'virī', 'M') # man [wer]
 
 # Unit Four
 aeternus = AdjVocab('aeternus', '-a', '-um') # eternal []
-agō = VerbVocab('agō', '-ere', 'ēgī', 'āctus') # do, drive, discuss, spend (time), conduct
+agō = VerbVocab('agō', '-ere', 'ēgī', 'āctus') # do (your job), drive, discuss, spend (time), conduct
 altus = AdjVocab('altus', '-a', '-um') # high, tall, deep [altitude]
 amīcus = AdjVocab('amīcus', '-a', '-um') # friendly (+ dative) [amicable]
 inimīcus = AdjVocab('inimīcus', '-a', '-um') # unfriendly, hostile (+ dative) [enemy]
@@ -163,7 +163,7 @@ fīlia = NounVocab('fīlia', '-ae', 'F') # daughter
 honestus = AdjVocab('honestus', '-a', '-um') # respected, honorable, distinguished
 intellegō = VerbVocab('intellegō', '-ere', 'intellēxī', 'intellēctus') # understand [intelligence]
 legō = VerbVocab('legō', '-ere', 'lēgī', 'lēctus') # choose, select; read [legible]
-liber = NounVocab('liber', 'librī', 'M') # book (NOT līber)
+liber = NounVocab('liber', 'librī', 'M') # book (NOT līber) [library]
 littera = NounVocab('littera', '-ae', 'F') # letter (of the alphabet); pl., letter (epistle)
 mēnsa = NounVocab('mēnsa', '-ae', 'F') # table
 mittō = VerbVocab('mittō', '-ere', 'mīsī', 'missus') # send [mission]
