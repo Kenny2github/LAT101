@@ -93,8 +93,8 @@ def test_verbs() -> None:
     full_conj_table(sentiō)
 
 def test_nouns() -> None:
-    from vocab import servus
-    declension_table(servus)
+    from vocab import urbs
+    declension_table(urbs)
 
 def test_adjectives() -> None:
     from vocab import clārus
@@ -117,9 +117,9 @@ def random_test() -> None:
     ))
 
 def main():
-    test_verbs()
+    # test_verbs()
     # print('=====')
-    # test_nouns()
+    test_nouns()
     # print('=====')
     # test_adjectives()
     # print('=====')

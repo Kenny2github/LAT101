@@ -401,6 +401,15 @@ class Noun:
                             'locative': 'ī',
                             'vocative': 'us',
                         },
+                        'F': {
+                            'nominative': 'us',
+                            'genitive': 'ī',
+                            'dative': 'ō',
+                            'accusative': 'um',
+                            'ablative': 'ō',
+                            'locative': 'ī',
+                            'vocative': 'us',
+                        },
                         'N': {
                             'nominative': 'um',
                             'genitive': 'ī',
@@ -413,6 +422,15 @@ class Noun:
                     },
                     'pl': {
                         'M': {
+                            'nominative': 'ī',
+                            'genitive': 'ōrum',
+                            'dative': 'īs',
+                            'accusative': 'ōs',
+                            'ablative': 'īs',
+                            'locative': 'īs',
+                            'vocative': 'ī',
+                        },
+                        'F': {
                             'nominative': 'ī',
                             'genitive': 'ōrum',
                             'dative': 'īs',
@@ -516,6 +534,32 @@ class Noun:
 
     def __str__(self) -> str:
         """Render to string word"""
+        if self.vocab.is_power:
+            table: dict[Number, dict[Case, LiteralString]] = {
+                'sg': {
+                    'nominative': 'vīs',
+                    # 'genitive': '--',
+                    # 'dative': '--',
+                    'accusative': 'vim',
+                    'ablative': 'vī',
+                    'locative': 'vī',
+                    'vocative': 'vīs',
+                },
+                'pl': {
+                    'nominative': 'vīrēs',
+                    'genitive': 'vīrium',
+                    'dative': 'vīribus',
+                    'accusative': 'vīrēs',
+                    'ablative': 'vīribus',
+                    'locative': 'vīribus',
+                    'vocative': 'vīrēs',
+                }
+            }
+            try:
+                return table[self.number][self.case]
+            except KeyError:
+                raise NotImplementedError(
+                    'vīs has no genitive or dative singular') from None
         ending = self.declension_ending
         if ending == '--': # signals to use the first principal part
             return self.vocab.nominative_singular
@@ -569,10 +613,12 @@ class NounVocab:
         match self.declension, self.gender:
             case 1, _:
                 ns = self.nominative_singular.removesuffix('a')
-            case 2, 'M':
+            case 2, 'M' | 'F': # domus, -ī, F.
                 ns = self.nominative_singular.removesuffix('us')
             case 2, 'N':
                 ns = self.nominative_singular.removesuffix('um')
+            case 3, _:
+                ns = '' # 3rd declension isn't regular enough to use -shortenings
             case _:
                 raise ValueError(self.declension)
 
@@ -594,6 +640,10 @@ class NounVocab:
     def stem(self) -> LiteralString:
         return self.genitive_singular.removesuffix(
             self.declension_endings[self.declension - 1])
+
+    @property
+    def is_power(self) -> bool:
+        return self.nominative_singular == 'vīs'
 
 @dataclass
 class AdjVocab:

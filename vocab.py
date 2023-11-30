@@ -237,3 +237,49 @@ socius_n = NounVocab('socius', '-ī', 'M') # ally [society]
 # tamen (adv.) nevertheless
 vīvō = VerbVocab('vīvō', '-ere', 'vīxī', 'vīctus') # be alive, live [vivid]
 vocō = VerbVocab.first_conj('vocō') # call [vocal]
+
+# Unit Six
+animal = NounVocab('animal', 'animālis', 'N', True) # animal []
+Athēnae = NounVocab('Athēna', '-ae', 'F') # Athens (plural only)
+# atque or ac (conj.) and
+aurōra = NounVocab('aurōra', '-ae', 'F') # dawn [aurora]
+careō = VerbVocab('careō', '-ēre', '-uī', '-itus') # lack, be without (+ abl.)
+corpus = NounVocab('corpus', 'corporis', 'N') # body [corpse]
+dīcō = VerbVocab('dīcō', '-ere', 'dīxī', 'dictus') # say, tell, speak [dictate]
+# diū (adv.) for a long time
+domus = NounVocab('domus', '-ī', 'F') # house, home [domicile]
+exemplar = NounVocab('exemplar', 'exemplāris', 'N', True) # copy, model, example []
+exemplum = NounVocab('exemplum', '-ī', 'N') # example []
+frāter = NounVocab('frāter', 'frātris', 'M') # brother [fraternal]
+homō = NounVocab('homō', 'hominis', 'M') # human being, man [hominid]
+ignis = NounVocab('ignis', 'ignis', 'M', True) # fire [ignite]
+Italia = NounVocab('Italia', '-ae', 'F') # Italy []
+Iūnō = NounVocab('Iūnō', 'Iūnōnis', 'F') # Juno [] (sister and wife of Jupiter)
+Iuppiter = NounVocab('Iuppiter', 'Iovis', 'M') # Jupiter [] (god of the sky)
+līberō = VerbVocab.first_conj('līberō') # free [liberate]
+lūmen = NounVocab('lūmen', 'lūminis', 'N') # light [illuminate]
+mare = NounVocab('mare', 'maris', 'N', True) # sea [Mare Nostrum]
+māter = NounVocab('māter', 'mātris', 'F') # mother [maternal]
+mēns = NounVocab('mēns', 'mentis', 'F', True) # mind, disposition, intellect [mental]
+mīles = NounVocab('mīles', 'mīlitis', 'M') # soldier [military]
+moenia = NounVocab('moenia', 'moenis', 'N', True) # (city) walls (plural only)
+mōns = NounVocab('mōns', 'montis', 'M', True) # mountain []
+# nōn sōlum ... sed etiam (idiom) not only ... but also
+nox = NounVocab('nox', 'noctis', 'F', True) # night [nocturnal]
+oppūgnō = VerbVocab.first_conj('oppūgnō') # attack, fight against [oppose]
+pater = NounVocab('pater', 'patris', 'M') # father [paternal]
+regō = VerbVocab('regō', '-ere', 'rēxī', 'rēctus') # rule [reign]
+rēx = NounVocab('rēx', 'rēgis', 'M') # king [T. Rex]
+Rōma = NounVocab('Rōma', '-ae', 'F') # Rome []
+rūmor = NounVocab('rūmor', 'rūmōris', 'M') # rumor [], gossip
+rūs = NounVocab('rūs', 'rūris', 'N') # country (as opposed to city) [rural]
+sānus = AdjVocab('sānus', '-a', '-um') # sound, healthy, sane []
+sciō = VerbVocab('sciō', '-īre', '-īvī', '-ītus') # know [scry?]
+servitūs = NounVocab('servitūs', 'servitūtis', 'F') # slavery [servitude]
+sīdus = NounVocab('sīdus', 'sīderis', 'N') # constellation, star; heaven
+soror = NounVocab('soror', 'sorōris', 'F') # sister [sorority]
+spargō = VerbVocab('spargō', '-ere', 'sparsī', 'sparsus') # scatter, sprinkle, distribute [sparse]
+timor = NounVocab('timor', 'timōris', 'M') # fear, dread [tremor]
+urbs = NounVocab('urbs', 'urbis', 'F', True) # city [urban]
+vigor = NounVocab('vigor', 'vigōris', 'M') # liveliness, activity, vigor []
+vīs = NounVocab('vīs', 'vīris', 'F') # (sg.) force, power; (pl.) strength
