@@ -375,6 +375,7 @@ class Noun:
                         'dative': 'ae',
                         'accusative': 'am',
                         'ablative': 'ā',
+                        'locative': 'ae',
                         'vocative': 'a',
                     },
                     'pl': {
@@ -383,6 +384,7 @@ class Noun:
                         'dative': 'īs',
                         'accusative': 'ās',
                         'ablative': 'īs',
+                        'locative': 'īs',
                         'vocative': 'ae',
                     }
                 }
@@ -396,6 +398,7 @@ class Noun:
                             'dative': 'ō',
                             'accusative': 'um',
                             'ablative': 'ō',
+                            'locative': 'ī',
                             'vocative': 'us',
                         },
                         'N': {
@@ -404,6 +407,7 @@ class Noun:
                             'dative': 'ō',
                             'accusative': 'um',
                             'ablative': 'ō',
+                            'locative': 'ī',
                             'vocative': 'um',
                         }
                     },
@@ -414,6 +418,7 @@ class Noun:
                             'dative': 'īs',
                             'accusative': 'ōs',
                             'ablative': 'īs',
+                            'locative': 'īs',
                             'vocative': 'ī',
                         },
                         'N': {
@@ -422,6 +427,7 @@ class Noun:
                             'dative': 'īs',
                             'accusative': 'a',
                             'ablative': 'īs',
+                            'locative': 'īs',
                             'vocative': 'a',
                         }
                     }
@@ -465,6 +471,7 @@ Case = Literal[
     'dative',
     'accusative',
     'ablative',
+    'locative',
     'vocative',
 ]
 
