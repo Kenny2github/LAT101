@@ -438,12 +438,88 @@ class Noun:
                     if self.vocab.nominative_singular.endswith('r'):
                         return 'r'
                 return table2[self.number][self.vocab.gender][self.case]
+            case 3:
+                table3: dict[Number, dict[Gender, dict[Case, LiteralString]]] = {
+                    'sg': {
+                        'M': {
+                            'nominative': '--',
+                            'genitive': 'is',
+                            'dative': 'ī',
+                            'accusative': 'em',
+                            'ablative': 'e',
+                            'locative': 'e',
+                            'vocative': '--',
+                        },
+                        'F': {
+                            'nominative': '--',
+                            'genitive': 'is',
+                            'dative': 'ī',
+                            'accusative': 'em',
+                            'ablative': 'e',
+                            'locative': 'e',
+                            'vocative': '--',
+                        },
+                        'N': {
+                            'nominative': '--',
+                            'genitive': 'is',
+                            'dative': 'ī',
+                            'accusative': '--',
+                            'ablative': 'e',
+                            'locative': 'e',
+                            'vocative': '--',
+                        }
+                    },
+                    'pl': {
+                        'M': {
+                            'nominative': 'ēs',
+                            'genitive': 'um',
+                            'dative': 'ibus',
+                            'accusative': 'ēs',
+                            'ablative': 'ibus',
+                            'locative': 'ibus',
+                            'vocative': 'ēs',
+                        },
+                        'F': {
+                            'nominative': 'ēs',
+                            'genitive': 'um',
+                            'dative': 'ibus',
+                            'accusative': 'ēs',
+                            'ablative': 'ibus',
+                            'locative': 'ibus',
+                            'vocative': 'ēs',
+                        },
+                        'N': {
+                            'nominative': 'a',
+                            'genitive': 'um',
+                            'dative': 'ibus',
+                            'accusative': 'a',
+                            'ablative': 'ibus',
+                            'locative': 'ibus',
+                            'vocative': 'a',
+                        }
+                    }
+                }
+                if self.vocab.i_stem:
+                    if self.case == 'genitive' and self.number == 'pl':
+                        return 'ium'
+                    if (
+                        self.case in {'nominative', 'accusative', 'vocative'}
+                        and self.number == 'pl'
+                        and self.vocab.gender == 'N'
+                    ):
+                        return 'ia'
+                    if self.case in {'ablative', 'locative'} and self.number == 'sg':
+                        return 'ī'
+                return table3[self.number][self.vocab.gender][self.case]
             case _:
                 raise ValueError(self.vocab.declension)
 
     def __str__(self) -> str:
         """Render to string word"""
-        return self.vocab.stem + self.declension_ending
+        ending = self.declension_ending
+        if ending == '--': # signals to use the first principal part
+            return self.vocab.nominative_singular
+        return self.vocab.stem + ending
 
 @dataclass
 class Adjective:
@@ -487,6 +563,7 @@ class NounVocab:
     nominative_singular: LiteralString
     genitive_singular: LiteralString
     gender: Gender
+    i_stem: bool = False
 
     def __post_init__(self) -> None:
         match self.declension, self.gender:
@@ -543,7 +620,7 @@ class AdjVocab:
                 if verb.vocab.i_stem:
                     stem = stem[:-1] + 'ie' # type: ignore
                 stem = stem[:-1] + lengthen(stem[-1]) # type: ignore
-                # TODO: third declension nouns
+                # TODO: third declension adjectives
                 return cls(stem + 'ns', '--', '--')
             case (Tense.PERFECT, 'passive'):
                 return cls(verb.vocab.perfect_passive_participle, '-a', '-um')
