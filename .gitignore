@@ -1,5 +1,6 @@
 *
 !.gitignore
 !*.py
+!*.html
 !*.md
 !*.bibtex
