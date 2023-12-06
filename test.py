@@ -93,7 +93,8 @@ def test_verbs() -> None:
     full_conj_table(sentiō)
 
 def test_nouns() -> None:
-    from vocab import urbs
+    from vocab import homō, urbs
+    declension_table(homō)
     declension_table(urbs)
 
 def test_adjectives() -> None:
