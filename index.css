@@ -1,0 +1,82 @@
+body {
+	display: grid;
+	grid-template-areas:
+		"heading heading"
+		"gloss explanations";
+	grid-template-columns: max-content 1fr;
+	grid-template-rows: min-content 1fr;
+}
+
+h1 {
+	grid-area: heading;
+}
+#sentence {
+	grid-area: gloss;
+}
+#explanations {
+	grid-area: explanations;
+}
+
+#sentence td:first-child {
+	font-style: italic;
+}
+caption {
+	margin-top: 1em;
+	caption-side: bottom;
+}
+
+#explanations > * {
+	display: none;
+}
+#explanations > h2 {
+	display: block;
+}
+
+.after #after,
+.city #city,
+.attacked #attacked,
+.is #is,
+.mother #mother,
+.we-ordered #we-ordered,
+.not-to1 #not-to1,
+.fear #fear,
+.because #because,
+.we-felt #we-felt,
+.sister #sister,
+.and-brother #and-brother,
+.money #money,
+.and #and,
+.food #food,
+.to-inhabitants #to-inhabitants,
+.about-to-give #about-to-give,
+.to-be #to-be,
+.not-to2 #not-to2,
+.in #in,
+.danger #danger,
+.are #are {
+	font-weight: bold;
+}
+.after .after,
+.city .city,
+.attacked .attacked,
+.is .is,
+.mother .mother,
+.we-ordered .we-ordered,
+.not-to1 .not-to1,
+.fear .fear,
+.because .because,
+.we-felt .we-felt,
+.sister .sister,
+.and-brother .and-brother,
+.money .money,
+.and .and,
+.food .food,
+.to-inhabitants .to-inhabitants,
+.about-to-give .about-to-give,
+.to-be .to-be,
+.not-to2 .not-to2,
+.in .in,
+.danger .danger,
+.are .are {
+	text-decoration: underline;
+}
