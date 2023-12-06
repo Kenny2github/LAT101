@@ -42,3 +42,7 @@ document.querySelectorAll('#sentence tr').forEach(tr => {
 	td.addEventListener('focus', () => on(td));
 	td.addEventListener('blur', () => off(td));
 });
+
+Array.from(document.getElementsByTagName('abbr')).forEach(abbr => {
+	abbr.tabIndex = 0;
+});
