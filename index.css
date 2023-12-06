@@ -8,6 +8,17 @@ body {
 	column-gap: 1rem;
 }
 
+@media screen and (max-width: 600px) {
+	body {
+		grid-template-areas: "heading" "gloss" "explanations";
+		grid-template-columns: 1fr;
+		grid-template-rows: auto auto auto;
+	}
+	#sentence {
+		width: 100%;
+	}
+}
+
 #desc {
 	grid-area: heading;
 }
