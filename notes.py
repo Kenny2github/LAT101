@@ -678,7 +678,7 @@ class AdjVocab:
                 return cls(verb.stem + 'ūrus', '-a', '-um')
             case (Tense.FUTURE, 'passive'):
                 stem = verb.stem[:-1] + shorten(verb.stem[-1]) # type: ignore
-                return cls(verb.stem + 'ndus', '-a', '-um')
+                return cls(stem + 'ndus', '-a', '-um')
             case x:
                 raise ValueError(x)
 
