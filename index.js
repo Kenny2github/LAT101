@@ -29,11 +29,16 @@ function off(td) {
 	});
 }
 
-document.querySelectorAll('td[id]').forEach(td => {
-	td.addEventListener('mouseenter', () => on(td));
-	td.addEventListener('mouseout', () => off(td));
-	td.addEventListener('click', () => {
-		if (sentence.classList.contains(td.id)) off(td);
-		else off(td);
+document.querySelectorAll('#sentence tr').forEach(tr => {
+	const td = tr.querySelector('td[id]');
+	if (td === null) return; // not a td row
+	td.tabIndex = 0;
+	tr.addEventListener('mouseenter', () => on(td));
+	tr.addEventListener('mouseout', () => off(td));
+	tr.addEventListener('click', () => {
+		document.querySelectorAll('td[id]').forEach(td2 => off(td2));
+		on(td);
 	});
+	td.addEventListener('focus', () => on(td));
+	td.addEventListener('blur', () => off(td));
 });
