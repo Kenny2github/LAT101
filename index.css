@@ -18,7 +18,7 @@ h1 {
 	grid-area: explanations;
 }
 
-#sentence td:first-child {
+#sentence td[id] {
 	font-style: italic;
 }
 caption {
