@@ -34,11 +34,15 @@ body {
 }
 #sentence {
 	grid-area: gloss;
+	border-collapse: collapse;
 }
 #explanations {
 	grid-area: explanations;
 }
 
+#sentence td {
+	padding: 1px 5px;
+}
 #sentence td[id] {
 	font-style: italic;
 }
