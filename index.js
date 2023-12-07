@@ -34,7 +34,7 @@ document.querySelectorAll('#sentence tr').forEach(tr => {
 	if (td === null) return; // not a td row
 	td.tabIndex = 0;
 	tr.addEventListener('mouseenter', () => on(td));
-	tr.addEventListener('mouseout', () => off(td));
+	tr.addEventListener('mouseleave', () => off(td));
 	tr.addEventListener('click', () => {
 		document.querySelectorAll('td[id]').forEach(td2 => off(td2));
 		on(td);
