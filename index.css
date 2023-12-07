@@ -61,6 +61,19 @@ caption {
 	display: block;
 }
 
+#udl {
+	border: 1px solid #000;
+	border-radius: 0.5rem;
+	padding: 0.5rem;
+	display: inline-block;
+}
+#udl > table {
+	width: 100%;
+}
+#udl > table td {
+	vertical-align: top;
+}
+
 abbr[title] {
 	position: relative;
 	text-decoration: underline dotted;
