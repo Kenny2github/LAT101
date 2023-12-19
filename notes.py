@@ -1,7 +1,9 @@
 from __future__ import annotations
+from collections.abc import Sequence
+import re
 from typing import Literal, LiteralString, ClassVar, \
     cast, assert_never
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from enum import Enum
 
 VOWELS = tuple('aeiouyāēīōū')
@@ -61,6 +63,14 @@ class Tense(Enum):
 
 Voice = Literal['active', 'passive']
 Mood = Literal['indicative', 'subjunctive', 'imperative', 'infinitive']
+
+@dataclass
+class Vocab:
+    definition: LiteralString | None = field(kw_only=True, default=None)
+
+    @property
+    def definitions(self) -> Sequence[str]:
+        return re.split(r'[,;]', self.definition or '')
 
 @dataclass
 class Verb:
@@ -292,7 +302,7 @@ class Verb:
         raise ValueError(self.tense)
 
 @dataclass
-class VerbVocab:
+class VerbVocab(Vocab):
     present_active_indicative_1p_s: LiteralString
     present_active_infinitive: LiteralString
     perfect_active_indicative_1p_s: LiteralString
@@ -314,10 +324,11 @@ class VerbVocab:
             self.perfect_passive_participle = pai + item.lstrip('-')
 
     @classmethod
-    def first_conj(cls, present_active_indicative_1p_s: LiteralString) -> VerbVocab:
+    def first_conj(cls, present_active_indicative_1p_s: LiteralString,
+                   definition: LiteralString | None = None) -> VerbVocab:
         return cls(
             present_active_indicative_1p_s,
-            '-āre', '-āvī', '-ātus'
+            '-āre', '-āvī', '-ātus', definition=definition
         )
 
     @property
@@ -600,7 +611,7 @@ Gender = Literal[
 ]
 
 @dataclass
-class NounVocab:
+class NounVocab(Vocab):
     declension_endings: ClassVar[list[LiteralString]] = [
         'ae', 'ī', 'is', 'ūs', 'eī'
     ]
@@ -646,7 +657,7 @@ class NounVocab:
         return self.nominative_singular == 'vīs'
 
 @dataclass
-class AdjVocab:
+class AdjVocab(Vocab):
     masculine: LiteralString
     feminine: LiteralString
     neuter: LiteralString
@@ -694,7 +705,7 @@ class AdjVocab:
                 assert_never(x)
 
 @dataclass
-class PrepVocab:
+class PrepVocab(Vocab):
     prep: LiteralString | list[LiteralString]
     case: Case
 
