@@ -61,7 +61,7 @@ dubitō = VerbVocab.first_conj('dubitō', definition='doubt, hesitate') # dubiou
 glōria = NounVocab('glōria', '-ae', 'F', definition='glory, renown') # []
 incipiō = VerbVocab('incipiō', '-ere', 'incēpī', 'inceptus', definition='begin')
 incola = NounVocab('incola', '-ae', 'M', definition='inhabitant')
-incola_F = NounVocab('incola', '-ae', 'F', definition='(occasionally F.)')
+incola_F = NounVocab('incola', '-ae', 'F', definition='inhabitant (occasionally F.)')
 incolō = VerbVocab('incolō', '-ere', '-uī', '--', definition='inhabit')
 īnsidiae = NounVocab('insidia', '-ae', 'F', definition='ambush, plot, treachery (used only in pl.)') # insidious
 invidia = NounVocab('invidia', '-ae', 'F', definition='envy, jealousy')
