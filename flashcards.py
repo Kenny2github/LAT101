@@ -16,14 +16,15 @@ def do_flashcards() -> None:
         definition = item.definition
         if random.randint(0, 1):
             print(', '.join(parts))
-            if not input('Definition  (yours): '):
-                return
+            answer = input('Definition  (yours): '):
             print('Definition (actual):', definition)
         else:
             print(definition)
-            if not input('Principal parts  (yours): '):
-                return
-            print('Principal parts (actual):', ', '.join(parts))
+            print(', '.join(['_' * max(map(len, parts))] * len(parts)))
+            answer = input():
+            print(', '.join(parts))
+        if not answer:
+            return
         print('-' * 20)
 
 if __name__ == '__main__':
