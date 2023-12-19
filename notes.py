@@ -72,6 +72,10 @@ class Vocab:
     def definitions(self) -> Sequence[str]:
         return re.split(r'[,;]', self.definition or '')
 
+    @property
+    def principal_parts(self) -> Sequence[LiteralString]:
+        return []
+
 @dataclass
 class Verb:
     person: Person
@@ -330,6 +334,15 @@ class VerbVocab(Vocab):
             present_active_indicative_1p_s,
             '-āre', '-āvī', '-ātus', definition=definition
         )
+
+    @property
+    def principal_parts(self) -> Sequence[str]:
+        return [
+            self.present_active_indicative_1p_s,
+            self.present_active_infinitive,
+            self.perfect_active_indicative_1p_s,
+            self.perfect_passive_participle,
+        ]
 
     @property
     def conjugation(self) -> Literal[1, 2, 3, 4]:
@@ -638,6 +651,21 @@ class NounVocab(Vocab):
             self.genitive_singular = ns + item.lstrip('-')
 
     @property
+    def principal_parts(self) -> Sequence[str]:
+        if self.i_stem:
+            return [
+                self.nominative_singular,
+                self.genitive_singular,
+                '-ium',
+                self.gender + '.',
+            ]
+        return [
+            self.nominative_singular,
+            self.genitive_singular,
+            self.gender + '.',
+        ]
+
+    @property
     def declension(self) -> Literal[1, 2, 3, 4, 5]:
         gs = self.genitive_singular
         for i, ending in enumerate(self.declension_endings, start=1):
@@ -693,6 +721,14 @@ class AdjVocab(Vocab):
             case x:
                 raise ValueError(x)
 
+    @property
+    def principal_parts(self) -> Sequence[str]:
+        return [
+            self.masculine,
+            self.feminine,
+            self.neuter,
+        ]
+
     def as_noun(self, gender: Gender) -> NounVocab:
         match gender:
             case 'M':
@@ -708,6 +744,12 @@ class AdjVocab(Vocab):
 class PrepVocab(Vocab):
     prep: LiteralString | list[LiteralString]
     case: Case
+
+    @property
+    def principal_parts(self) -> Sequence[str]:
+        if isinstance(self.prep, str):
+            return [self.prep, '+ ' + self.case]
+        return [*self.prep, '+ ' + self.case]
 
 if __name__ == '__main__':
     from test import main
