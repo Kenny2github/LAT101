@@ -79,7 +79,7 @@ nisī = Vocab(definition='(conj.) unless, if ... not; except')
 noxa = NounVocab('noxa', '-ae', 'F', definition='harm, injury') # noxious
 nunc = Vocab(definition='(adv.) now')
 pellō = VerbVocab('pellō', '-ere', 'pepulī', 'pulsus', definition='push, drive (off)') # pulse
-expellō = VerbVocab('expellō', '-ere', 'expepulī', 'expulsus', definition='push out, drive out (ex + pellō)') # expel
+expellō = VerbVocab('expellō', '-ere', 'expulī', 'expulsus', definition='push out, drive out (ex + pellō)') # expel
 per = PrepVocab('per', 'accusative', definition='through')
 prōvincia = NounVocab('prōvincia', '-ae', 'F', definition='province') # []
 semper = Vocab(definition='(adv.) always')
