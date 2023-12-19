@@ -16,12 +16,12 @@ def do_flashcards() -> None:
         definition = item.definition
         if random.randint(0, 1):
             print(', '.join(parts))
-            answer = input('Definition  (yours): '):
+            answer = input('Definition  (yours): ')
             print('Definition (actual):', definition)
         else:
             print(definition)
             print(', '.join(['_' * max(map(len, parts))] * len(parts)))
-            answer = input():
+            answer = input()
             print(', '.join(parts))
         if not answer:
             return
